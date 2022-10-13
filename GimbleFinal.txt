@@ -1,0 +1,28 @@
+#include "ACCEL.h"
+#include <Wire.h>
+#include <Servo.h>
+
+ACCEL accel(Wire);
+int X = 0;
+Servo servo;
+
+void setup() 
+{
+  Serial.begin(9600);
+  Wire.begin();
+  accel.begin();
+  accel.calcGyroOffsets(true);
+  servo.attach(9);
+}
+
+void loop() 
+{
+  Serial.print("AngleX : ");
+  Serial.print(accel.getAngleX());
+  Serial.print("\tAngleY : ");
+  Serial.print(accel.getAngleY());
+  Serial.print("\tAngleZ : ");
+  Serial.println(accel.getAngleZ());
+  X = accel.getAngleX();
+  servo.write(X);
+}
