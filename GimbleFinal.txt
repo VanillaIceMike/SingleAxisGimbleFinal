@@ -1,3 +1,5 @@
+This code is meant for an Arduino Uno Microcontroller
+
 #include "ACCEL.h"
 #include <Wire.h>
 #include <Servo.h>
